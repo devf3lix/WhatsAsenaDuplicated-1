@@ -141,10 +141,10 @@ Asena.addCommand({pattern: 'degis ?(.*)', fromMe: true, desc: Lang.DEGİS_DESC},
             } 
         });
     }
-    else if ((!match[1] == 'unblock' || !match[1] == 'add' || !match[1] == 'block' || !match[1] == 'mute' || !match[1] == 'unmute' || !match[1] == 'afk' || !match[1] == 'alive' || !match[1] == 'demote' || !match[1] == 'promote' || !match[1] == 'ban' || !match[1] == 'kickme') && message.reply_message) {
+    else if (!match[1] == 'unblock' || !match[1] == 'add' || !match[1] == 'block' || !match[1] == 'mute' || !match[1] == 'unmute' || !match[1] == 'afk' || !match[1] == 'alive' || !match[1] == 'demote' || !match[1] == 'promote' || !match[1] == 'ban' || !match[1] == 'kickme' && message.reply_message) {
         return await message.client.sendMessage(message.jid, Lang.WR, MessageType.text);
     }
-    else if ((!match[1] == 'unblock' || !match[1] == 'add' || !match[1] == 'block' || !match[1] == 'mute' || !match[1] == 'unmute' || !match[1] == 'afk' || !match[1] == 'alive' || !match[1] == 'demote' || !match[1] == 'promote' || !match[1] == 'ban' || !match[1] == 'kickme') && !message.reply_message) {
+    else if (!match[1] == 'unblock' || !match[1] == 'add' || !match[1] == 'block' || !match[1] == 'mute' || !match[1] == 'unmute' || !match[1] == 'afk' || !match[1] == 'alive' || !match[1] == 'demote' || !match[1] == 'promote' || !match[1] == 'ban' || !match[1] == 'kickme' && !message.reply_message) {
         return await message.client.sendMessage(message.jid, Lang.WR, MessageType.text);
     }
 }));
