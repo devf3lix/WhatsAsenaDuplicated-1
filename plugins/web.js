@@ -29,7 +29,7 @@ function speedText(speed) {
 
 const calc = "Basit matematik işlemleri için hesap makinesi."
 Asena.addCommand({pattern: 'calc ?(.*)', fromMe: true, desc: calc}, (async (message, match) => {
-    if (match[1].length < 4) { return await message.client.sendMessage(message.jid,'*Lütfen Geçerli Olan Şekilde Kullanın!* \n*.calc 1 + 2*\n*.calc 3 x 5*\n*.calc 10 / 5*\n*.calc 5 - 2*', MessageType.text) }
+    if (match[1].length < 4) { return await message.client.sendMessage(message.jid,'*Lütfen Geçerli Olan Şekilde Kullanın!* \n*.calc 1 + 2*\n*.calc 3 x 5*\n*.calc 10 / 5*\n*.calc 5 - 2* \n*.calc 100 % 5*', MessageType.text) }
     if (match[1].includes('+')) { var split = match[1].split('+'), sonsayi = split[1], ilksayi = split[0]
         var result = ilksayi + sonsayi
         try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
@@ -53,6 +53,15 @@ Asena.addCommand({pattern: 'calc ?(.*)', fromMe: true, desc: calc}, (async (mess
         try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
         catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text)
         }
+    }
+    else if (match[1].includes('%')) { var split = match[1].split('%'), sonsayibol = split[1], ilksayibol = split[0] 
+        var result = ilksayibol % sonsayibol
+        try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+        catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text)
+        }
+    }
+    else if (match[1].includes('%') || match[1].includes('-') || match[1].includes('+') || match[1].includes('x') || match[1].includes('/') ) {
+        return await message.client.sendMessage(message.jid,'*Lütfen Geçerli Olan Şekilde Kullanın!* \n*.calc 1 + 2*\n*.calc 3 x 5*\n*.calc 10 / 5*\n*.calc 5 - 2* \n*.calc 100 % 5*', MessageType.text)
     }
 }));
 
