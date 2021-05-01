@@ -15,6 +15,22 @@ const Lang = Language.getString('_asena');
 
 Asena.addCommand({pattern: 'asena ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
     var CMD_HELP = '';
+
+
+
+
+
+let duplicates = [...yourArray]
+yourArrayWithoutDuplicates.forEach((item) => {
+  const i = duplicates.indexOf(item)
+  duplicates = duplicates
+    .slice(0, i)
+    .concat(duplicates.slice(i + 1, duplicates.length))
+})
+
+console.log(duplicates)
+
+
     if (match[1] === '') {
         Asena.commands.map(
             async (command) =>  {
@@ -32,16 +48,19 @@ Asena.addCommand({pattern: 'asena ?(.*)', fromMe: true, dontAddCommandList: true
                 } else {
                     HANDLER = '.';
                 }
+                
                 CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + match[2]) : command.pattern) + (command.desc === '' ? '```\n\n' : '```\n');
                 if (command.desc !== '') CMD_HELP += '*💬 ' + Lang.DESC + ':* ```' + command.desc + (command.warn === '' ? '```\n\n' : '```\n');
                 if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
                 if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n';
-
+                const yourArray = [CMD_HELP]
+                const items = [yourArray]
+                const unique = [ ...new Set(items)]  
             }
         );
         
         await message.client.sendMessage(
-            message.jid,'●▬▬▬ *WhatsAsena Founder Edition* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
+            message.jid,'●▬▬▬ *WhatsAsena Founder Edition* ▬▬▬●\n\n' + unique, MessageType.text
         );    
     } else {
         var CMD_HELP = '';
