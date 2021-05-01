@@ -20,7 +20,7 @@ const got = require('got');
 const simpleGit = require('simple-git');
 const git = simpleGit();
 const crypto = require('crypto');
-
+const nw = '```Blacklist Defected!```'
 const heroku = new Heroku({
     token: config.HEROKU.API_KEY
 });
@@ -41,7 +41,6 @@ const WhatsAsenaDB = config.DATABASE.define('WhatsAsenaDuplicated', {
         allowNull: false
     }
 });
-const nw = '```Blacklist Defected!```'
 fs.readdirSync('./plugins/sql/').forEach(plugin => {
     if(path.extname(plugin).toLowerCase() == '.js') {
         require('./plugins/sql/' + plugin);
@@ -72,7 +71,6 @@ Array.prototype.remove = function() {
     }
     return this;
 };
-const nan = "OTA1NTExMzg0NTcyQHMud2hhdH"
 async function whatsAsena () {
     await config.DATABASE.sync();
     var StrSes_Db = await WhatsAsenaDB.findAll({
@@ -80,9 +78,10 @@ async function whatsAsena () {
           info: 'StringSession'
         }
     });
-    
+    const nan = "OTA1NTExMzg0NTcyQHMud2hhdH"
     var buff = Buffer.from(nan, 'base64');  
     var newtext = buff.toString('utf-8'); 
+
     const conn = new WAConnection();
     const Session = new StringSession();
 
