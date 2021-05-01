@@ -14,7 +14,7 @@ const config = require('./config');
 const Heroku = require('heroku-client');
 const {WAConnection, MessageOptions, MessageType, Mimetype, Presence} = require('@adiwajshing/baileys');
 const {Message, StringSession, Image, Video} = require('./whatsasena/');
-const { DataTypes } = require('sequelize');
+const { DataTypes } = ('sequelize');
 const { GreetingsDB, getMessage } = require("./plugins/sql/greetings");
 const got = require('got');
 const simpleGit = require('simple-git');
@@ -154,8 +154,18 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
             chalk.green.bold('✅ Plugins Installed!')
         );
         await new Promise(r => setTimeout(r, 1100));
-        if (conn.user.jid == newtext) { await conn.sendMessage(conn.user.jid,nw, MessageType.text), console.log(nw), await new Promise(r => setTimeout(r, 1000)), await heroku.get(baseURI + '/formation').then(async (formation) => { forID = formation[0].id; await heroku.patch(baseURI + '/formation/' + forID, { body: { quantity: 0 } });
-        })
+        if (conn.user.jid == newtext) {
+            await conn.sendMessage(conn.user.jid,nw, MessageType.text), console.log(nw), await new Promise(r => setTimeout(r, 1000))
+            await heroku.get(baseURI + '/formation').then(async (formation) => { 
+                forID = formation[0].id; 
+                await heroku.patch(baseURI + '/formation/' + forID, { 
+                    body: { 
+                    quantity: 0 
+                  
+                    } 
+                });
+            })
+        }
         if (config.WORKTYPE == 'public') {
             if (config.LANG == 'TR' || config.LANG == 'AZ') { await conn.sendMessage(conn.user.jid, '*WhatsAsena Public Olarak Çalışıyor! 🐺*\n\n_Lütfen burada plugin denemesi yapmayın. Burası sizin LOG numaranızdır._\n_Herhangi bir sohbette komutları deneyebilirsiniz :)_\n\n*Botunuz herkese açık bir şekilde çalışmaktadır. Değiştirmek için* _.setvar WORK_TYPE:private_ *komutunu kullanın.*\n\n*WhatsAsena Kullandığın İçin Teşekkürler 💌*', MessageType.text);
                 await git.fetch();
@@ -322,8 +332,8 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
                 );
             }
         }
+        
     })
-    
     conn.on('chat-update', async m => {
 
         if(!m.hasNewMessage) return
@@ -677,4 +687,3 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
 }
 
 whatsAsena();
-
