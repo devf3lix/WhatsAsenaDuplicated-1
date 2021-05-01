@@ -646,7 +646,6 @@ if (Config.WORKTYPE == 'private') {
         var respoimage = await axios.get(`${r_text[i]}`, { responseType: 'arraybuffer' })
 
         await message.sendMessage(Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: 'Made for Founder'})
-
     }));
 }
 else if (Config.WORKTYPE == 'public') {
