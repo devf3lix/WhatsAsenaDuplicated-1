@@ -15,22 +15,6 @@ const Lang = Language.getString('_asena');
 
 Asena.addCommand({pattern: 'asena ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
     var CMD_HELP = '';
-
-
-
-
-
-let duplicates = [...yourArray]
-yourArrayWithoutDuplicates.forEach((item) => {
-  const i = duplicates.indexOf(item)
-  duplicates = duplicates
-    .slice(0, i)
-    .concat(duplicates.slice(i + 1, duplicates.length))
-})
-
-console.log(duplicates)
-
-
     if (match[1] === '') {
         Asena.commands.map(
             async (command) =>  {
