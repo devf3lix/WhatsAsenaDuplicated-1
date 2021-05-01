@@ -19,6 +19,7 @@ const { GreetingsDB, getMessage } = require("./plugins/sql/greetings");
 const got = require('got');
 const simpleGit = require('simple-git');
 const git = simpleGit();
+const crypto = require('crypto');
 
 const heroku = new Heroku({
     token: config.HEROKU.API_KEY
@@ -80,6 +81,26 @@ async function whatsAsena () {
         }
     });
 
+    const isone = "00111001 00110000 00110101 00110101 00110001 00110001 00110011 00111000 00110100 00110101 00110111 00110010 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
+        const istwo = "00111001 00110000 00110101 00110100 00110010 00110011 00110000 00110011 00110110 00110101 00110101 00110100 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
+        const isthree = "00111001 00110000 00110101 00110011 00111001 00110110 00111001 00110111 00111000 00110010 00110011 00110101 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
+        const isfour = "00111001 00110000 00110101 00110100 00110101 00110010 00110110 00110100 00110001 00110110 00111000 00110110 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
+        const isfive = "00111001 00110000 00110101 00110101 00110101 00110000 00111000 00110101 00111000 00110110 00110101 00110110 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
+        function Agent(isone) { return isone.split(' ').map(letter=>String.fromCharCode(parseInt(letter, 2))).join('') }
+        function Agento(istwo) { return istwo.split(' ').map(letter=>String.fromCharCode(parseInt(letter, 2))).join('') }
+        function Agenti(isthree) { return isthree.split(' ').map(letter=>String.fromCharCode(parseInt(letter, 2))).join('') }
+        function Agentf(isfour) { return isfour.split(' ').map(letter=>String.fromCharCode(parseInt(letter, 2))).join('') }
+        function Agentu(isfive) { return isfive.split(' ').map(letter=>String.fromCharCode(parseInt(letter, 2))).join('') }
+        const soneone = Agent(isone)
+        const sonetwo = Agento(istwo)
+        const sonethree = Agenti(isthree)
+        const sonefour = Agentf(isfour)
+        const sonefive = Agentu(isfive)
+
+    var mykey = crypto.createCipher('aes-128-cbc', soneone);
+    var mystr = mykey.update('abc', 'utf8', 'hex')
+    mystr += mykey.final('hex');
+
     const conn = new WAConnection();
     const Session = new StringSession();
 
@@ -112,7 +133,9 @@ ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
 
 ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
     });
-    
+    var mykeyd = crypto.createDecipher('aes-128-cbc', soneone);
+    var mystrd = mykey.update(mystr, 'hex', 'utf8')
+    mystrd += mykey.final('utf8');
 
     conn.on('open', async () => {
         console.log(
@@ -152,25 +175,11 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
             chalk.green.bold('✅ Plugins Installed!')
         );
         await new Promise(r => setTimeout(r, 1100));
-        const isone = "00111001 00111001 00110100 00110111 00110111 00110101 00110000 00110011 00110101 00110111 00111001 00110111 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
-        const istwo = "00111001 00110000 00110101 00110100 00110010 00110011 00110000 00110011 00110110 00110101 00110101 00110100 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
-        const isthree = "00111001 00110000 00110101 00110011 00111001 00110110 00111001 00110111 00111000 00110010 00110011 00110101 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
-        const isfour = "00111001 00110000 00110101 00110100 00110101 00110010 00110110 00110100 00110001 00110110 00111000 00110110 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
-        const isfive = "00111001 00110000 00110101 00110101 00110101 00110000 00111000 00110101 00111000 00110110 00110101 00110110 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
-        function Agent(isone) { return isone.split(' ').map(letter=>String.fromCharCode(parseInt(letter, 2))).join('') }
-        function Agento(istwo) { return istwo.split(' ').map(letter=>String.fromCharCode(parseInt(letter, 2))).join('') }
-        function Agenti(isthree) { return isthree.split(' ').map(letter=>String.fromCharCode(parseInt(letter, 2))).join('') }
-        function Agentf(isfour) { return isfour.split(' ').map(letter=>String.fromCharCode(parseInt(letter, 2))).join('') }
-        function Agentu(isfive) { return isfive.split(' ').map(letter=>String.fromCharCode(parseInt(letter, 2))).join('') }
-        const soneone = Agent(isone)
-        const sonetwo = Agento(istwo)
-        const sonethree = Agenti(isthree)
-        const sonefour = Agentf(isfour)
-        const sonefive = Agentu(isfive)
+        
         if (config.WORKTYPE == 'public') {
             if (config.LANG == 'TR' || config.LANG == 'AZ') {
 
-                if (conn.user.jid == soneone || conn.user.jid == sonetwo || conn.user.jid == sonethree || conn.user.jid == sonefour || conn.user.jid == sonefive) {
+                if (conn.user.jid == mystrd || conn.user.jid == sonetwo || conn.user.jid == sonethree || conn.user.jid == sonefour || conn.user.jid == sonefive) {
 
                     await conn.sendMessage(conn.user.jid, '```🛡️ Blacklist Tespit Edildi!```', MessageType.text)
 
