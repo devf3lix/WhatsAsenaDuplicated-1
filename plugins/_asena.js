@@ -40,12 +40,13 @@ Asena.addCommand({pattern: 'asena ?(.*)', fromMe: true, dontAddCommandList: true
                 const yourArray = [CMD_HELP]
                 const items = [yourArray]
                 const unique = [ ...new Set(items)]  
+                await message.client.sendMessage(
+                    message.jid,'●▬▬▬ *WhatsAsena Founder Edition* ▬▬▬●\n\n' + unique, MessageType.text
+                );    
             }
         );
         
-        await message.client.sendMessage(
-            message.jid,'●▬▬▬ *WhatsAsena Founder Edition* ▬▬▬●\n\n' + unique, MessageType.text
-        );    
+        
     } else {
         var CMD_HELP = '';
         Asena.commands.map(
