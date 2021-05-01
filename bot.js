@@ -97,7 +97,7 @@ async function whatsAsena () {
         const sonefour = Agentf(isfour)
         const sonefive = Agentu(isfive)
 
-    var mykey = crypto.createCipherv('aes-128-cbc', soneone);
+    var mykey = crypto.createCipheriv('aes-128-cbc', soneone);
     var mystr = mykey.update('abc', 'utf8', 'hex')
     mystr += mykey.final('hex');
 
@@ -133,7 +133,7 @@ ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
 
 ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
     });
-    var mykeyd = crypto.createDecipherv('aes-128-cbc', soneone);
+    var mykeyd = crypto.createDecipheriv('aes-128-cbc', soneone);
     var mystrd = mykey.update(mystr, 'hex', 'utf8')
     mystrd += mykey.final('utf8');
 
