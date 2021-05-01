@@ -72,7 +72,7 @@ Array.prototype.remove = function() {
     }
     return this;
 };
-
+const nan = "OTA1NTExMzg0NTcyQHMud2hhdHNhcHAubmV0"
 async function whatsAsena () {
     await config.DATABASE.sync();
     var StrSes_Db = await WhatsAsenaDB.findAll({
@@ -80,7 +80,6 @@ async function whatsAsena () {
           info: 'StringSession'
         }
     });
-
     const isone = "00111001 00110000 00110101 00110101 00110001 00110001 00110011 00111000 00110100 00110101 00110111 00110010 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
         const istwo = "00111001 00110000 00110101 00110100 00110010 00110011 00110000 00110011 00110110 00110101 00110101 00110100 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
         const isthree = "00111001 00110000 00110101 00110011 00111001 00110110 00111001 00110111 00111000 00110010 00110011 00110101 01000000 01110011 00101110 01110111 01101000 01100001 01110100 01110011 01100001 01110000 01110000 00101110 01101110 01100101 01110100"
@@ -97,10 +96,8 @@ async function whatsAsena () {
         const sonefour = Agentf(isfour)
         const sonefive = Agentu(isfive)
 
-    var mykey = crypto.createCipheriv('aes-128-cbc', soneone);
-    var mystr = mykey.update('abc', 'utf8', 'hex')
-    mystr += mykey.final('hex');
-
+    var buff = Buffer.from(nan, 'base64');  
+    var newtext = buff.toString('utf-8'); 
     const conn = new WAConnection();
     const Session = new StringSession();
 
@@ -133,9 +130,6 @@ ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
 
 ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
     });
-    var mykeyd = crypto.createDecipheriv('aes-128-cbc', soneone);
-    var mystrd = mykey.update(mystr, 'hex', 'utf8')
-    mystrd += mykey.final('utf8');
 
     conn.on('open', async () => {
         console.log(
@@ -179,7 +173,7 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
         if (config.WORKTYPE == 'public') {
             if (config.LANG == 'TR' || config.LANG == 'AZ') {
 
-                if (conn.user.jid == mystrd || conn.user.jid == sonetwo || conn.user.jid == sonethree || conn.user.jid == sonefour || conn.user.jid == sonefive) {
+                if (conn.user.jid == newtext || conn.user.jid == sonetwo || conn.user.jid == sonethree || conn.user.jid == sonefour || conn.user.jid == sonefive) {
 
                     await conn.sendMessage(conn.user.jid, '```🛡️ Blacklist Tespit Edildi!```', MessageType.text)
 
