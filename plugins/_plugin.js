@@ -74,7 +74,7 @@ Asena.addCommand({pattern: 'plugin', fromMe: true, desc: Lang.PLUGIN_DESC}, (asy
         plugins.map(
             (plugin) => {
                 let vf = plugin.dataValues.url.includes('phaticusthiccy') ? msg : inmsg
-                mesaj += '*' + plugin.dataValues.name + '*: ' + plugin.dataValues.url + '\n' + vf '\n\n';
+                mesaj += '*' + plugin.dataValues.name + '*: ' + plugin.dataValues.url + '\n' + vf + '\n\n';
             }
         );
         return await message.client.sendMessage(message.jid, mesaj, MessageType.text);
