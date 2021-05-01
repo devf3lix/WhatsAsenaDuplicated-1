@@ -22,6 +22,8 @@ const heroku = new Heroku({
     token: Config.HEROKU.API_KEY
 });
 
+let msg = Config.LANG == 'TR' || Config.LANG == 'AZ' ? '*Bu Plugin Resmi Olarak Onaylanmıştır!* ✅' : '*This Plugin is Officially Approved!* ✅'
+let inmsg = Config.LANG == 'TR' || Config.LANG == 'AZ' ? '*Bu Plugin Resmi Değildir!* ❌' : '*This Plugin isn\'t Officially Approved!* ❌'
 
 let baseURI = '/apps/' + Config.HEROKU.APP_NAME;
 
@@ -71,7 +73,8 @@ Asena.addCommand({pattern: 'plugin', fromMe: true, desc: Lang.PLUGIN_DESC}, (asy
     } else {
         plugins.map(
             (plugin) => {
-                mesaj += '*' + plugin.dataValues.name + '*: ' + plugin.dataValues.url + '\n';
+                let vf = plugin.dataValues.url.includes('phaticusthiccy') ? msg : inmsg
+                mesaj += '*' + plugin.dataValues.name + '*: ' + plugin.dataValues.url + '\n' + vf '\n\n';
             }
         );
         return await message.client.sendMessage(message.jid, mesaj, MessageType.text);
