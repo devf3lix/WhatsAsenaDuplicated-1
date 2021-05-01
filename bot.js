@@ -322,7 +322,7 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
                 );
             }
         }
-    });
+    }
     
     conn.on('chat-update', async m => {
 
