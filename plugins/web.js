@@ -29,39 +29,77 @@ function speedText(speed) {
 
 const calc = "Basit matematik işlemleri için hesap makinesi."
 Asena.addCommand({pattern: 'calc ?(.*)', fromMe: true, desc: calc}, (async (message, match) => {
-    if (match[1].length < 4) { return await message.client.sendMessage(message.jid,'*Lütfen Geçerli Olan Şekilde Kullanın!* \n*.calc 1 + 2*\n*.calc 3 x 5*\n*.calc 10 / 5*\n*.calc 5 - 2* \n*.calc 100 % 5*', MessageType.text) }
-    if (match[1].includes('+')) { var split = match[1].split('+'), sonsayi = split[1], ilksayi = split[0]
-        var result = ilksayi + sonsayi
-        try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
-        catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text);
+    if (!message.reply_message) {
+        if (match[1].length < 4) { return await message.client.sendMessage(message.jid,'*Lütfen Geçerli Olan Şekilde Kullanın!* \n*.calc 1 + 2*\n*.calc 3 x 5*\n*.calc 10 / 5*\n*.calc 5 - 2* \n*.calc 100 % 5*', MessageType.text) }
+        if (match[1].includes('+')) { var split = match[1].split('+'), sonsayi = split[1], ilksayi = split[0]
+            var result = ilksayi + sonsayi
+            try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+            catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text);
+            }
+        }
+        else if (match[1].includes('-')) { var split = match[1].split('-'), sonsayicik = split[1], ilksayicik = split[0] 
+            var result = ilksayicik - sonsayicik
+            try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+            catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text);
+            }
+        }
+        else if (match[1].includes('x')) { var split = match[1].split('x'), sonsayicarp = split[1], ilksayicarp = split[0] 
+            var result = ilksayicarp * sonsayicarp
+            try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+            catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text);
+            }
+        }
+        else if (match[1].includes('/')) { var split = match[1].split('/'), sonsayibol = split[1], ilksayibol = split[0] 
+            var result = ilksayibol / sonsayibol
+            try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+            catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text)
+            }
+        }
+        else if (match[1].includes('%')) { var split = match[1].split('%'), sonsayibol = split[1], ilksayibol = split[0] 
+            var result = ilksayibol % sonsayibol
+            try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+            catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text)
+            }
+        }
+        else if (!match[1].includes('%') || !match[1].includes('-') || !match[1].includes('+') || !match[1].includes('x') || !match[1].includes('/') ) {
+            return await message.client.sendMessage(message.jid,'*Lütfen Geçerli Olan Şekilde Kullanın!* \n*.calc 1 + 2*\n*.calc 3 x 5*\n*.calc 10 / 5*\n*.calc 5 - 2* \n*.calc 100 % 5*', MessageType.text)
         }
     }
-    else if (match[1].includes('-')) { var split = match[1].split('-'), sonsayicik = split[1], ilksayicik = split[0] 
-        var result = ilksayicik - sonsayicik
-        try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
-        catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text);
+    else {
+        if (message.reply_message.length < 4) { return await message.client.sendMessage(message.jid,'*Lütfen Geçerli Olan Şekilde Bir Mesaja Yanıt Verin!* \n*1 + 2*\n*3 x 5*\n*10 / 5*\n*5 - 2* \n*100 % 5*', MessageType.text) }
+        if (message.reply_message.text.includes('+')) { var split = match[1].split('+'), sonsayi = split[1], ilksayi = split[0]
+            var result = ilksayi + sonsayi
+            try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+            catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text);
+            }
         }
-    }
-    else if (match[1].includes('x')) { var split = match[1].split('x'), sonsayicarp = split[1], ilksayicarp = split[0] 
-        var result = ilksayicarp * sonsayicarp
-        try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
-        catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text);
+        else if (message.reply_message.text.includes('-')) { var split = match[1].split('-'), sonsayicik = split[1], ilksayicik = split[0] 
+            var result = ilksayicik - sonsayicik
+            try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+            catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text);
+            }
         }
-    }
-    else if (match[1].includes('/')) { var split = match[1].split('/'), sonsayibol = split[1], ilksayibol = split[0] 
-        var result = ilksayibol / sonsayibol
-        try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
-        catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text)
+        else if (message.reply_message.text.includes('x')) { var split = match[1].split('x'), sonsayicarp = split[1], ilksayicarp = split[0] 
+            var result = ilksayicarp * sonsayicarp
+            try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+            catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text);
+            }
         }
-    }
-    else if (match[1].includes('%')) { var split = match[1].split('%'), sonsayibol = split[1], ilksayibol = split[0] 
-        var result = ilksayibol % sonsayibol
-        try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
-        catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text)
+        else if (message.reply_message.text.includes('/')) { var split = match[1].split('/'), sonsayibol = split[1], ilksayibol = split[0] 
+            var result = ilksayibol / sonsayibol
+            try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+            catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text)
+            }
         }
-    }
-    else if (match[1].includes('%') || match[1].includes('-') || match[1].includes('+') || match[1].includes('x') || match[1].includes('/') ) {
-        return await message.client.sendMessage(message.jid,'*Lütfen Geçerli Olan Şekilde Kullanın!* \n*.calc 1 + 2*\n*.calc 3 x 5*\n*.calc 10 / 5*\n*.calc 5 - 2* \n*.calc 100 % 5*', MessageType.text)
+        else if (message.reply_message.text.includes('%')) { var split = match[1].split('%'), sonsayibol = split[1], ilksayibol = split[0] 
+            var result = ilksayibol % sonsayibol
+            try { await message.client.sendMessage(message.jid,'*Hesaplama Yapıldı ✅*\n*Sonuç:* ' + result, MessageType.text) }
+            catch (err) { return await message.client.sendMessage(message.jid,'*Hesaplama Yapılamadı ❌*\n*Hata:* \n' + err,MessageType.text)
+            }
+        }
+        else if (!message.reply_message.text.includes('%') || !message.reply_message.text.includes('-') || !message.reply_message.text.includes('+') || !message.reply_message.text.includes('x') || !message.reply_message.text.includes('/') ) {
+            return await message.client.sendMessage(message.jid,'*Lütfen Geçerli Olan Şekilde Kullanın!* \n*.calc 1 + 2*\n*.calc 3 x 5*\n*.calc 10 / 5*\n*.calc 5 - 2* \n*.calc 100 % 5*', MessageType.text)
+        }
     }
 }));
 
