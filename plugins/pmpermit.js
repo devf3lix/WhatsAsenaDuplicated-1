@@ -113,10 +113,12 @@ async function nopermitacton(id) {
                     })
                 }
             })
-    } catch (err) {
+    } 
+    catch (err) {
         return "error"
-    } finally {
-        updatewrite.close();
+    }
+    var updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+    updatewrite.close();
     }
 }
 async function handler(id) {
