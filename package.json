@@ -47,6 +47,7 @@
     "jsdom": "^16.5.1",
     "langs": "^2.0.0",
     "meme-maker": "^2.1.2",
+    "mongodb": "^3.6.3",
     "node-tesseract-ocr": "^2.0.0",
     "pg": "^8.5.1",
     "sequelize": "^6.5.1",
