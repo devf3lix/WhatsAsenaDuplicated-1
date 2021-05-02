@@ -13,3 +13,23 @@ Asena.addCommand({pattern: 'disapprove$', desc: dss, onlyPm: true}, (async (mess
     pmpermit.nopermitacton(message.jid.split("@")[0])
     await message.client.sendMessage(message.jid,'PM İzni Kaldırıldı!', MessageType.text);
 }));
+
+Asena.addCommand({on: 'text', fromMe: false, onlyPm: true, deleteCommand: false, dontAddCommandList: true }, (async (message, match) => {
+    if (Config.PMPERMİT) { // Pm check for pmpermit module
+        var pmpermitcheck = await pmpermit.handler(message.jid.split("@")[0])
+        if (pmpermitcheck == "permitted") {
+            
+        } else if (pmpermitcheck.mute == true && message.jid.isMuted == false) { // mute 
+            await message.client.sendMessage(message.jid, pmpermitcheck.msg, MessageType.text)
+            var unmuteDate = new Date();
+            unmuteDate.setSeconds(Number(unmuteDate.getSeconds()) + Number(config.pmpermit_mutetime));
+            await message.client.modifyChat (message.jid, ChatModification.mute, unmuteDate * 60)
+        } else if (message.jid.isMuted == true) {
+            
+        } else if (pmpermitcheck == "error") {
+            
+        } else {
+            await message.client.sendMessage(message.jid, pmpermitcheck.msg, MessageType.text)
+        }
+    }
+}));
