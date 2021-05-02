@@ -8,7 +8,7 @@ const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const axios = require('axios');
 const ss = require('../config');
 
-let bir = ss.WORKTYPE == 'private' ? true : false && true 
+let bir = ss.WORKTYPE == 'private' ? true : false || true 
 const Language = require('../language');
 const Lang = Language.getString('carbon');
 
