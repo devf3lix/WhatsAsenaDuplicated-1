@@ -16,6 +16,7 @@ function addCommand(info, func) {
 
     var infos = {
         fromMe: info['fromMe'] === undefined ? true : info['fromMe'], // Or Sudo
+        public: info['fromMe'] === undefined ? true : info[fromMe'],
         onlyGroup: info['onlyGroup'] === undefined ? false : info['onlyGroup'],
         onlyPinned: info['onlyPinned'] === undefined ? false : info['onlyPinned'],
         onlyPm: info['onlyPm'] === undefined ? false : info['onlyPm'],
