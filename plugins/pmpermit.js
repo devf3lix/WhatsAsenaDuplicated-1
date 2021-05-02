@@ -113,7 +113,7 @@ async function nopermitacton(id) {
                     })
                 }
             })
-        })
+        
     } 
     catch (err) {
         return "error"
