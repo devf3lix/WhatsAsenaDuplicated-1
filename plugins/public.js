@@ -76,29 +76,12 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
     let regex2 = new RegExp('https://')
     if (regex1.test(message.message)) {
         if (message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us')
-            await message.client.sendMessage(message.jid, '*link detected*', MessageType.text)
+            await message.client.sendMessage(message.jid, '*link detected*', MessageType.text, {quoted: message.data }))
         }
     } 
     else if (regex2.test(message.message)){
         if (message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us')
-            await message.client.sendMessage(message.jid, '*link detected*', MessageType.text)
+            await message.client.sendMessage(message.jid, '*link detected*', MessageType.text, {quoted: message.data }))
         }
     }
-}));
-Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
-    const LinkDetscsn = antilink.includes(message.jid)
-    let grup = await message.client.groupMetadata(message.jid);
-        var jids = [];
-        mesaj = '';
-        grup['participants'].map(async (uye) => {
-            if (uye.isAdmin) {
-                if (message.jid.includes('-') && LinkDetscsn && !uye.isAdmin){
-                    if (message.message.match(/(https:\/\/chat.whatsapp.com)/gi)) {
-                        await message.client.sendMessage(message.jid, '*⚠️ Link Detected! ⚠️*', MessageType.text, {quoted: message.data }).then(async() => {
-                        await message.client.groupRemove(message.jid, [message.reply_message.data.participant])
-                        })
-                    }
-                }
-            }
-        })
 }));
