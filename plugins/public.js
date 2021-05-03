@@ -73,6 +73,6 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
     if (message.message.includes('http')) {
         isLink = true
-        await message.client.sendMessage(message.jid,'.antilink', MessageType.text { quoted: message.data })
+        await message.client.sendMessage(message.jid,'.antilink', MessageType.text, { quoted: message.data })
     }
 }));
