@@ -109,7 +109,7 @@ Asena.addCommand({pattern: 'afk ?(.*)', fromMe: true, deleteCommand: false, desc
     }
 }));
 Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (message, match) => {
-    if (GAME.inGame && message.includes('!link')) {
+    if (GAME.inGame && message.message.includes('!link')) {
        await message.client.sendMessage(message.jid,'AntiLink',MessageType.text);
     }
 }));
