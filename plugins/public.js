@@ -76,12 +76,12 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
     let regex2 = new RegExp('https://')
     if (regex1.test(message.message)) {
         if (message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us')
-            await message.client.sendMessage(message.jid, '*link detected*', MessageType.text, {quoted: message.data }))
+            await message.client.sendMessage(message.jid, '*link detected*', MessageType.text, {quoted: message.data })
         }
     } 
     else if (regex2.test(message.message)){
         if (message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us')
-            await message.client.sendMessage(message.jid, '*link detected*', MessageType.text, {quoted: message.data }))
+            await message.client.sendMessage(message.jid, '*link detected*', MessageType.text, {quoted: message.data })
         }
     }
 }));
