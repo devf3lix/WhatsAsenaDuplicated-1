@@ -70,8 +70,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
     if (config.ANTİLİNK == 'true') {
-        let regex = new RegExp('http');
-        if (message.message.match(regex)) {
+        if (message.message.includes('http')) {
             isLink.situation.parts = true
             await message.client.sendMessage(message.jid,'.antilink \n\n*Links Are Unallowed!*', MessageType.text, { quoted: message.data })
         }
