@@ -69,16 +69,15 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
     }
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
-    if (config.ANTİLİNK == 'true') {
-        if (message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us') {
-            let regex = new RegExp('http');
-            if (message.message.match(regex)) {
-                isLink.situation.parts = true
-                await message.client.sendMessage(message.jid,'.antilink \n\n*Links Are Unallowed!*', MessageType.text, { quoted: message.data })
-            }
-        }
-        else {
-            return;
+    if (config.ANTİLİNK == 'true' && message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us') {
+        let regex = new RegExp('http');
+        if (message.message.match(regex)) {
+            isLink.situation.parts = true
+            await message.client.sendMessage(message.jid,'.antilink \n\n*Links Are Unallowed!*', MessageType.text, { quoted: message.data })
         }
     }
+    else {
+        return;
+    }
+    
 }));
