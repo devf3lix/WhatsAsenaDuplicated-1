@@ -6,6 +6,9 @@ const axios = require('axios');
 Asena.addCommand({pattern: 'Π√∆∆', deleteCommand: false, dontAddCommandList: true, fromMe: false}, async (message, match) => {
     return;
 });
+Asena.addCommand({pattern: 'antilink', deleteCommand: false, dontAddCommandList: true, fromMe: true}, async (message, match) => {
+    return await message.client.groupRemove(message.jid, [message.reply_message.data.participant])
+});
 Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (message, match) => {
     if (config.WORKTYPE == 'public' && message.message.includes('.carbon')) {
        if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.CARBON_NEEDWORD, MessageType.text);
@@ -66,6 +69,6 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
     if (message.message.includes('http')) {
-        await message.client.groupRemove(message.jid, message.data.participant.split("@")[0])
+        await message.client.sendMessage(message.jid,'.antilink', MessageType.text { quoted: message.data })
     }
 }));
