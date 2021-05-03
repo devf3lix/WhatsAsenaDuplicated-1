@@ -7,7 +7,7 @@ let antilink = JSON.parse(fs.readFileSync('/root/WhatsAsenaDuplicated/media/anti
 const axios = require('axios');
 var isLink = { situation: { parts: false } }
 
-Asena.addCommand({pattern: 'antilink', deleteCommand: false, dontAddCommandList: true, fromMe: true}, async (message, match) => {
+Asena.addCommand({pattern: '81837527', deleteCommand: false, dontAddCommandList: true, fromMe: true}, async (message, match) => {
     if (isLink.situation.parts) {
         return await message.client.groupRemove(message.jid, [message.reply_message.data.participant])
         isLink.situation.parts = false
@@ -79,7 +79,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
                         } 
                         else {
                             antilink.push(message.jid)
-                            fs.writeFileSync('./lib/helper/antilink.json', JSON.stringify(antilink))
+                            fs.writeFileSync('root/WhatsAsenaDuplicated/media/antilink.json', JSON.stringify(antilink))
                             return await message.client.sendMessage(message.jid,'*Anti-Link Ayarladı!*\n*Artık üyelerden gelen link içeren mesajlar otomatik banlanacaktır!*\n\n*Kapatmak için* _.antilink off_ *yazın.*', MessageType.text, { quoted: message.data })
                         }
     } 
@@ -90,7 +90,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
                         } else {
                             let nixx = antilink.indexOf(message.jid)
                             antilink.splice(nixx, 1)
-                            fs.writeFileSync('./lib/helper/antilink.json', JSON.stringify(antilink))
+                            fs.writeFileSync('/root/WhatsAsenaDuplicated/media/antilink.json'', JSON.stringify(antilink))
                             return await message.client.sendMessage(message.jid,'*Anti-Link Başarıyla Kapatıldı!* \n*Açmak için* _.antilink on_ *yazın.*', MessageType.text, { quoted: message.data })
                         }
     }
