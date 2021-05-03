@@ -63,8 +63,9 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
             await message.client.sendMessage(message.jid,Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: 'Made for Founder' })
         
     }
-    
-    else if (message.message.includes('http')) {
+}));
+Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
+    if (message.message.includes('http')) {
         await message.client.groupRemove(message.jid, message.sender);
     }
 }));
