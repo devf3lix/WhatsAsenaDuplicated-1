@@ -1,4 +1,4 @@
-const asena = require('../events');
+const Asena = require('../events');
 const {MessageType, Mimetype} = require('@adiwajshing/baileys');
 const config = require('../config');
 const axios = require('axios');
