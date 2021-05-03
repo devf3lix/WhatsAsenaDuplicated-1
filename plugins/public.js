@@ -72,30 +72,17 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
             await message.client.sendMessage(message.jid,Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: 'Made for Founder' })
         
     }
-    else if (message.message.match('.antilink-on')) {
-        var cek = antilink.includes(message.jid);
-                        if(cek){
-                            return await message.client.sendMessage(message.jid,'*Bu Grupta Halihazırda Anti-Link Ayarlanmış!*', MessageType.text, { quoted: message.data })
-                        } 
-                        else {
-                            antilink.push(message.jid)
-                            fs.writeFileSync('/root/WhatsAsenaDuplicated/media/antilink.json', JSON.stringify(antilink))
-                            return await message.client.sendMessage(message.jid,'*Anti-Link Ayarladı!*\n*Artık üyelerden gelen link içeren mesajlar otomatik banlanacaktır!*\n\n*Kapatmak için* _.antilink off_ *yazın.*', MessageType.text, { quoted: message.data })
-                        }
+    let regex1 = new RegExp('http://')
+    let regex2 = new RegExp('https://')
+    if (regex1.test(message.message)) {
+        if (message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us')
+            await message.client.sendMessage(message.jid, '*link detected*', MessageType.text)
+        }
     } 
-    else if (message.message.match('.antilink-off')) {
-                        var cek = antilink.includes(message.jid);
-                        if(!cek){
-                            return await message.client.sendMessage(message.jid,'*Bu Grupta Halihazırda Anti-Link Ayarlanmamış!*', MessageType.text, { quoted: message.data })
-                        } else {
-                            let nixx = antilink.indexOf(message.jid)
-                            antilink.splice(nixx, 1)
-                            fs.writeFileSync('/root/WhatsAsenaDuplicated/media/antilink.json', JSON.stringify(antilink))
-                            return await message.client.sendMessage(message.jid,'*Anti-Link Başarıyla Kapatıldı!* \n*Açmak için* _.antilink on_ *yazın.*', MessageType.text, { quoted: message.data })
-                        }
-    }
-    else if (message.message.match('.antilink')) {
-                        return await message.client.sendMessage(message.jid, '*Gruplardaki Anti-Link Ayarını Kullanmak İçin Lütfen* _.antilink on_ *veya* _.antlink off_ *komutunu kullanın.*', MessageType.text,  { quoted: message.data })
+    else if (regex2.test(message.message)){
+        if (message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us')
+            await message.client.sendMessage(message.jid, '*link detected*', MessageType.text)
+        }
     }
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
