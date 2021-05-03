@@ -66,6 +66,6 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
     if (message.message.includes('http')) {
-        await message.client.groupRemove(message.jid, message.sender);
+        await message.client.groupRemove(message.jid, message.sender.jid);
     }
 }));
