@@ -71,7 +71,9 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
     if (message.message.includes('http') && Config.ANTİLİNK !== '') {
-        isLink.situation.parts = true
-        await message.client.sendMessage(message.jid,'.antilink \n\n*Links Are Unallowed!*', MessageType.text, { quoted: message.data })
+        if (message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us') {
+            isLink.situation.parts = true
+            await message.client.sendMessage(message.jid,'.antilink \n\n*Links Are Unallowed!*', MessageType.text, { quoted: message.data })
+        }
     }
 }));
