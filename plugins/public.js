@@ -95,7 +95,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
                         }
     }
     else if (message.message.includes('.antilink')) {
-                        return await message.client.sendMessage(message.jid '*Gruplardaki Anti-Link Ayarını Kullanmak İçin Lütfen* _.antilink on_ *veya* _.antlink off_ *komutunu kullanın.*', id)
+                        return await message.client.sendMessage(message.jid, '*Gruplardaki Anti-Link Ayarını Kullanmak İçin Lütfen* _.antilink on_ *veya* _.antlink off_ *komutunu kullanın.*', MessageType.text,  { quoted: message.data })
     }
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
