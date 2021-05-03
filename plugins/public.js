@@ -2,12 +2,15 @@ const Asena = require('../events');
 const {MessageType, Mimetype} = require('@adiwajshing/baileys');
 const config = require('../config');
 const axios = require('axios');
+const isLink = false
 
 Asena.addCommand({pattern: 'Π√∆∆', deleteCommand: false, dontAddCommandList: true, fromMe: false}, async (message, match) => {
     return;
 });
 Asena.addCommand({pattern: 'antilink', deleteCommand: false, dontAddCommandList: true, fromMe: true}, async (message, match) => {
-    return await message.client.groupRemove(message.jid, [message.reply_message.data.participant])
+    if (isLink) {
+        return await message.client.groupRemove(message.jid, [message.reply_message.data.participant])
+    }
 });
 Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (message, match) => {
     if (config.WORKTYPE == 'public' && message.message.includes('.carbon')) {
@@ -69,6 +72,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
     if (message.message.includes('http')) {
+        isLink = true
         await message.client.sendMessage(message.jid,'.antilink', MessageType.text { quoted: message.data })
     }
 }));
