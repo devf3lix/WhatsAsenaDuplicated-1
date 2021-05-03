@@ -1,6 +1,7 @@
 const asena = require('../events');
-const {messagetype} = require('@adiwajshing/baileys');
+const {MessageType, Mimetype} = require('@adiwajshing/baileys');
 const config = require('../config');
+const axios = require('axios');
 
 Asena.addCommand({pattern: 'Π√∆∆', deleteCommand: false, dontAddCommandList: true, fromMe: false}, async (message, match) => {
     return;
