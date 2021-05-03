@@ -1,6 +1,8 @@
 const Asena = require('../events');
 const {MessageType, Mimetype} = require('@adiwajshing/baileys');
 const Config = require('../config');
+const fs = require('fs');
+let antilink = JSON.parse(fs.readFileSync('/root/WhatsAsenaDuplicated/media/antilink.json'))
 
 const axios = require('axios');
 var isLink = { situation: { parts: false } }
@@ -12,6 +14,8 @@ Asena.addCommand({pattern: 'antilink', deleteCommand: false, dontAddCommandList:
     }
 });
 Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (message, match) => {
+    const LinkDet = antilink.includes(message.jid)
+
     if (Config.WORKTYPE == 'public' && message.message.includes('.carbon')) {
        if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.CARBON_NEEDWORD, MessageType.text);
 
@@ -68,12 +72,45 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
             await message.client.sendMessage(message.jid,Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: 'Made for Founder' })
         
     }
+    else if (message.message.includes('.antilink on'))
+    var cek = antilink.includes(message.jid);
+                        if(cek){
+                            return await message.client.sendMessage(message.jid,'*Bu Grupta Halihazırda Anti-Link Ayarlanmış!*', MessageType.text, { quoted: message.data })
+                        } else {
+                            antilink.push(message.jid)
+                            fs.writeFileSync('./lib/helper/antilink.json', JSON.stringify(antilink))
+                            return await message.client.sendMessage(message.jid,'*Anti-Link Ayarladı!*\n*Artık üyelerden gelen link içeren mesajlar otomatik banlanacaktır!*\n\n*Kapatmak için* _.antilink off_ *yazın.*', MessageType.text, { quoted: message.data })
+                        }
+    } 
+    else if (message.message.includes('.antilink off')) {
+                        var cek = antilink.includes(message.jid);
+                        if(!cek){
+                            return await message.client.sendMessage(message.jid,'*Bu Grupta Halihazırda Anti-Link Ayarlanmamış!*', MessageType.text, { quoted: message.data })
+                        } else {
+                            let nixx = antilink.indexOf(message.jid)
+                            antilink.splice(nixx, 1)
+                            fs.writeFileSync('./lib/helper/antilink.json', JSON.stringify(antilink))
+                            return await message.client.sendMessage(message.jid,'*Anti-Link Başarıyla Kapatıldı!* \n*Açmak için* _.antilink on_ *yazın.*', MessageType.text, { quoted: message.data })
+                        }
+    }
+    else if (message.message.includes('.antilink')) {
+                        return await message.client.sendMessage(message.jid '*Gruplardaki Anti-Link Ayarını Kullanmak İçin Lütfen* _.antilink on_ *veya* _.antlink off_ *komutunu kullanın.*', id)
+    }
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
-    if (message.message.includes('http') && Config.ANTİLİNK !== '') {
-        if (message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us') {
-            isLink.situation.parts = true
-            await message.client.sendMessage(message.jid,'.antilink \n\n*Links Are Unallowed!*', MessageType.text, { quoted: message.data })
-        }
-    }
+    const LinkDetscsn = antilink.includes(message.jid)
+    let grup = await message.client.groupMetadata(message.jid);
+        var jids = [];
+        mesaj = '';
+        grup['participants'].map(async (uye) => {
+            if (uye.isAdmin) {
+                if (message.jid.includes('-') && LinkDetscan && !uye.isAdmin){
+                    if (message.message.match(/(https:\/\/chat.whatsapp.com)/gi)) {
+                        await message.client.sendMessage(message.jid, '*⚠️ Link Detected! ⚠️*', MessageType.text, {quoted: message.data }).then(async() => {
+                        await message.client.removeParticipant(message.jid, [message.reply_message.data.participant])
+                        })
+                    }
+                }
+            }
+        })
 }));
