@@ -63,4 +63,8 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
             await message.client.sendMessage(message.jid,Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: 'Made for Founder' })
         
     }
+    let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
+    if (message.message.includes(linkRegex) {
+        await message.client.groupRemove(message.jid, message.sender);
+    }
 }));
