@@ -90,7 +90,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
                         } else {
                             let nixx = antilink.indexOf(message.jid)
                             antilink.splice(nixx, 1)
-                            fs.writeFileSync('/root/WhatsAsenaDuplicated/media/antilink.json'', JSON.stringify(antilink))
+                            fs.writeFileSync('/root/WhatsAsenaDuplicated/media/antilink.json', JSON.stringify(antilink))
                             return await message.client.sendMessage(message.jid,'*Anti-Link Başarıyla Kapatıldı!* \n*Açmak için* _.antilink on_ *yazın.*', MessageType.text, { quoted: message.data })
                         }
     }
