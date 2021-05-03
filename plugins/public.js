@@ -5,7 +5,7 @@ const axios = require('axios');
 
 Asena.addCommand({pattern: 'Π√∆∆', deleteCommand: false, dontAddCommandList: true, fromMe: false}, async (message, match) => {
     return;
-}));
+});
 Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (message, match) => {
     if (config.WORKTYPE == 'public' && message.message.includes('.carbon')) {
        if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.CARBON_NEEDWORD, MessageType.text);
