@@ -69,7 +69,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
     }
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
-    if (config.ANTİLİNK == 'true' && message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us') {
+    if (config.ANTİLİNK == 'true') {
         let regex = new RegExp('http');
         if (message.message.match(regex)) {
             isLink.situation.parts = true
