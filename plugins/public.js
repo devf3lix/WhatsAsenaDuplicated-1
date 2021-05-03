@@ -1,6 +1,7 @@
 const Asena = require('../events');
 const {MessageType, Mimetype} = require('@adiwajshing/baileys');
-const config = require('../config');
+const Config = require('../config');
+
 const axios = require('axios');
 var isLink = { situation: { parts: false } }
 
@@ -69,7 +70,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
     }
 }));
 Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
-    if (message.message.includes('http') && config.ANTİLİNK !== '') {
+    if (message.message.includes('http') && Config.ANTİLİNK !== '') {
         isLink.situation.parts = true
         await message.client.sendMessage(message.jid,'.antilink \n\n*Links Are Unallowed!*', MessageType.text, { quoted: message.data })
     }
