@@ -70,6 +70,7 @@ if (ss.WORKTYPE == 'private') {
             await message.client.sendMessage(message.jid,Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: 'Made for Founder' })
 
     }));
+}
 else if (ss.WORKTYPE == 'public') {
     Asena.addCommand({pattern: 'carbon ?(.*)', fromMe: false, desc: Lang.CARBON_DESC, warn: Lang.CARBON_WARN}, (async (message, match) => {
 
