@@ -72,6 +72,9 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
             await message.client.sendMessage(message.jid,Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: 'Made for Founder' })
         
     }
+}));
+
+Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (message, match) => {
     let regex1 = new RegExp('http://')
     let regex2 = new RegExp('https://')
     if (regex1.test(message.message)) {
