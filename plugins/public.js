@@ -107,7 +107,7 @@ Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (mess
                 if (message.jid.includes('-') && LinkDetscan && !uye.isAdmin){
                     if (message.message.match(/(https:\/\/chat.whatsapp.com)/gi)) {
                         await message.client.sendMessage(message.jid, '*⚠️ Link Detected! ⚠️*', MessageType.text, {quoted: message.data }).then(async() => {
-                        await message.client.removeParticipant(message.jid, [message.reply_message.data.participant])
+                        await message.client.groupRemove(message.jid, [message.reply_message.data.participant])
                         })
                     }
                 }
