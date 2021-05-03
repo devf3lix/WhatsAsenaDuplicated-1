@@ -12,7 +12,7 @@ Asena.addCommand({pattern: 'antilink', deleteCommand: false, dontAddCommandList:
     }
 });
 Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (message, match) => {
-    if (config.WORKTYPE == 'public' && message.message.includes('.carbon')) {
+    if (Config.WORKTYPE == 'public' && message.message.includes('.carbon')) {
        if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.CARBON_NEEDWORD, MessageType.text);
 
             var rgbafmin = 0; 
