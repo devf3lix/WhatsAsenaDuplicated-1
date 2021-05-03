@@ -72,7 +72,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
             await message.client.sendMessage(message.jid,Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: 'Made for Founder' })
         
     }
-    else if (message.message.match('.antilink on')) {
+    else if (message.message.match('.antilink-on')) {
         var cek = antilink.includes(message.jid);
                         if(cek){
                             return await message.client.sendMessage(message.jid,'*Bu Grupta Halihazırda Anti-Link Ayarlanmış!*', MessageType.text, { quoted: message.data })
@@ -83,7 +83,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
                             return await message.client.sendMessage(message.jid,'*Anti-Link Ayarladı!*\n*Artık üyelerden gelen link içeren mesajlar otomatik banlanacaktır!*\n\n*Kapatmak için* _.antilink off_ *yazın.*', MessageType.text, { quoted: message.data })
                         }
     } 
-    else if (message.message.match('.antilink off')) {
+    else if (message.message.match('.antilink-off')) {
                         var cek = antilink.includes(message.jid);
                         if(!cek){
                             return await message.client.sendMessage(message.jid,'*Bu Grupta Halihazırda Anti-Link Ayarlanmamış!*', MessageType.text, { quoted: message.data })
