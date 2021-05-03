@@ -31,7 +31,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (messa
                } else {
                    HANDLER = '.';
                }
-               if (message.message.startsWith((match.length >= 3 ? (HANDLER + match[2]) : command.pattern) + 'carbon')) {
+               if (message.message.startsWith(match.length >= 3 ? (HANDLER + match[2]) : command.pattern + 'carbon')) {
                    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.CARBON_NEEDWORD, MessageType.text);
 
                    var rgbafmin = 0; 
