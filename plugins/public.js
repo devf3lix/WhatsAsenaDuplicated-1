@@ -73,7 +73,7 @@ Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (mess
         if (message.message.includes('http') || message.message.includes('www') || message.message.includes('com') || message.message.includes('t.me')) {
             if (message.jid == '905524317852-1612300121@g.us' || message.jid == '905511384572-1617736751@g.us') {
                 isLink.situation.parts = true
-                await message.client.sendMessage(message.jid,(match.length >= 3 ? (HANDLER + match[2]) : command.pattern) + 'antilink \n\n*Links Are Unallowed!*', MessageType.text, { quoted: message.data })
+                await message.client.sendMessage(message.jid,'.antilink \n\n*Links Are Unallowed!*', MessageType.text, { quoted: message.data })
             }
             else {
                 return;
