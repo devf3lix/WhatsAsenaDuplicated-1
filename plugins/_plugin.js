@@ -61,7 +61,7 @@ Asena.addCommand({pattern: 'install ?(.*)', fromMe: true, desc: Lang.INSTALL_DES
         }
         var exist = await Db.PluginDB.findAll({ where: {name: plugin_name} });
         if (exist.match(plugin_name)) {
-            return await message.client.sendMessage(message.jid,'*Aynı Plugin'\i 2 Kez Yüklemeyezsiniz!*', MessageType.text)
+            return await message.client.sendMessage(message.jid,'*Aynı Plugin\'i 2 Kez Yüklemeyezsiniz!*', MessageType.text)
         }
         else {
             await new Promise(r => setTimeout(r, 400));
