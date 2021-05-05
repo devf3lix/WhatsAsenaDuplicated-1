@@ -4,7 +4,7 @@ RUN git clone https://github.com/Xenon67/WhatsAsenaDuplicated /root/WhatsAsenaDu
 WORKDIR /root/WhatsAsenaDuplicated/
 ENV REPO="https://github.com/phaticusthiccy/WhatsAsenaDuplicated"
 ENV TZ=Europe/Istanbul
-RUN npm install opencv4nodejs
+
 RUN npm install supervisor -g
 RUN yarn install --no-audit
 
