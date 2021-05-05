@@ -644,7 +644,7 @@ if (Config.WORKTYPE == 'private') {
         r_text[619] = "https://images.wallpaperscraft.com/image/face_surprise_emotions_141979_1350x2400.jpg";
         r_text[620] = "https://images.wallpaperscraft.com/image/smiley_emotions_minimalism_134124_1350x2400.jpg";
         var i = Math.floor(621*Math.random())
-        async wall(err, func) => {
+        async (wall(err, func) => {
             try (func) {
                 const download = (url, path, callback) => {
                     request.head(url, (err, res, body) => {
@@ -659,7 +659,7 @@ if (Config.WORKTYPE == 'private') {
                     await message.client.sendMessage(message.jid,fs.readFileSync('/root/WhatsAsenaDuplicated/wallpaper.jpeg'), MessageType.image, {mimetype: Mimetype.jpeg, caption: 'Made for Founder'})
                 }))
             } catch (err) { return wall(func) }
-        }
+        })
         try {
            wall(func)
         } catch (err) { return wall(func) }
