@@ -2,6 +2,7 @@ const Asena = require('../events')
 const { MessageType, Mimetype} = require('@adiwajshing/baileys')
 const axios = require('axios')
 const sd = "Instagramdan video indirir."
+const got = require('got');
 const gt = "Github profilini gösterir."
 const hb = "Kiralanamaz"
 const yb = "Kiralanabilir"
