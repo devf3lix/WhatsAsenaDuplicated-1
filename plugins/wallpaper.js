@@ -644,19 +644,8 @@ if (Config.WORKTYPE == 'private') {
         r_text[619] = "https://images.wallpaperscraft.com/image/face_surprise_emotions_141979_1350x2400.jpg";
         r_text[620] = "https://images.wallpaperscraft.com/image/smiley_emotions_minimalism_134124_1350x2400.jpg";
         var i = Math.floor(621*Math.random())
-        const download = (url, path, callback) => {
-            request.head(url, (err, res, body) => {
-                request(url)
-                .pipe(fs.createWriteStream(path))
-                .on('close', callback)
-            })
-        }
-        const url = `${r_text[i]}`
-        const path = '/root/WhatsAsenaDuplicated/wallpaper.png'
-
-        download(url, path, (async () => {
-            await message.client.sendMessage(message.jid,fs.readFileSync('/root/WhatsAsenaDuplicated/wallpaper.png'), MessageType.image, {mimetype: Mimetype.png, caption: 'Made for Founder'})
-        }))
+        var respoimage = await axios.get(`${r_text[i]}`, { responseType: 'arraybuffer' })
+        await message.sendMessage(Buffer.from(respoimage.data, "base64"), MessageType.image, {mimetype: Mimetype.png, caption: 'Made for Founder'})
     }));
 }
 else if (Config.WORKTYPE == 'public') {
