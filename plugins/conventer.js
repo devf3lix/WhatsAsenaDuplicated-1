@@ -9,33 +9,13 @@ const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
 const {execFile} = require('child_process');
 const cwebp = require('cwebp-bin');
-const Axios = require('axios')
+const Config = require('../config');
 const cheerio = require('cheerio')
 const FormData = require('form-data')
+const Axios = require('axios');
 
 const Language = require('../language');
 const Lang = Language.getString('conventer');
-
-Asena.addCommand({pattern: 'mp4audio', fromMe: true, desc: Lang.MP4TOAUDİO_DESC}, (async (message, match) => {    
-    if (message.reply_message === false) return await message.sendMessage(Lang.MP4TOAUDİO_NEEDREPLY);
-    var downloading = await message.client.sendMessage(message.jid,Lang.MP4TOAUDİO,MessageType.text);
-    var location = await message.client.downloadAndSaveMediaMessage({
-        key: {
-            remoteJid: message.reply_message.jid,
-            id: message.reply_message.id
-        },
-        message: message.reply_message.data.quotedMessage
-    });
-
-    ffmpeg(location)
-        .withNoVideo()
-        .save('output.mp3')
-        .on('end', async () => {
-            await message.sendMessage(fs.readFileSync('output.mp3'), MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: false});
-        });
-    return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
-}));
-
 
 function webp2mp4File(path) {
     return new Promise(async (resolve, reject) => {
@@ -83,45 +63,134 @@ function webp2mp4File(path) {
     })
 }
 
-Asena.addCommand({pattern: 'imagesticker', fromMe: true, desc: Lang.STİCKER_DESC}, (async (message, match) => {    
-    if (message.reply_message === false) return await message.sendMessage(Lang.STİCKER_NEEDREPLY);
-    var downloading = await message.client.sendMessage(message.jid,Lang.STİCKER,MessageType.text);
-    var location = await message.client.downloadAndSaveMediaMessage({
-        key: {
-            remoteJid: message.reply_message.jid,
-            id: message.reply_message.id
-        },
-        message: message.reply_message.data.quotedMessage
-    });
+if (Config.WORKTYPE == 'private') {
 
-    ffmpeg(location)
-        .fromFormat('webp_pipe')
-        .save('output.jpg')
-        .on('end', async () => {
-            await message.sendMessage(fs.readFileSync('output.jpg'), MessageType.image, {mimetype: Mimetype.jpg, caption: 'Made for Founder'});
+    Asena.addCommand({pattern: 'mp4audio', fromMe: true, desc: Lang.MP4TOAUDİO_DESC}, (async (message, match) => {    
+
+        if (message.reply_message === false) return await message.client.sendMessage(message.jid, Lang.MP4TOAUDİO_NEEDREPLY, MessageType.text);
+        var downloading = await message.client.sendMessage(message.jid,Lang.MP4TOAUDİO,MessageType.text);
+        var location = await message.client.downloadAndSaveMediaMessage({
+            key: {
+                remoteJid: message.reply_message.jid,
+                id: message.reply_message.id
+            },
+            message: message.reply_message.data.quotedMessage
         });
-    return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
-}));
-const een = "Animasyonlu stickerleri videoya çevirir."
-Asena.addCommand({pattern: 'videosticker$', desc: een}, (async (message, match) => {
-    if (message.reply_message === false) return await message.sendMessage(Lang.STİCKER_NEEDREPLY);
 
-    const savedFilename = await message.client.downloadAndSaveMediaMessage({
-        key: {
-            remoteJid: message.reply_message.jid,
-            id: message.reply_message.id
-        },
-        message: message.reply_message.data.quotedMessage
-    });
-    await webp2mp4File(savedFilename).then(async (rest) => {
-        await Axios({ method: "GET", url: rest.result, responseType: "stream"}).then(({ data }) => {
-            const saving = data.pipe(fs.createWriteStream('/root/WhatsAsenaDuplicated/stweb.mp4'))
-            saving.on("finish", async () => {
-                await message.client.sendMessage(message.jid, fs.readFileSync('/root/WhatsAsenaDuplicated/stweb.mp4'), MessageType.video, { mimetype: Mimetype.mp4, caption: 'Made by WhatsAsena', quoted: message.data })
-                if (fs.existsSync(savedFilename)) fs.unlinkSync(savedFilename)
-                if (fs.existsSync('/root/WhatsAsenaDuplicated/stweb.mp4')) fs.unlinkSync('/root/WhatsAsenaDuplicated/stweb.mp4')
+        ffmpeg(location)
+            .withNoVideo()
+            .save('output.mp3')
+            .on('end', async () => {
+                await message.client.sendMessage(message.jid, fs.readFileSync('output.mp3'), MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: false});
+            });
+        return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
+    }));
+
+    Asena.addCommand({pattern: 'imagesticker', fromMe: true, desc: Lang.STİCKER_DESC}, (async (message, match) => {   
+ 
+        if (message.reply_message === false) return await message.client.sendMessage(message.jid, Lang.STİCKER_NEEDREPLY, MessageType.text);
+        var downloading = await message.client.sendMessage(message.jid,Lang.STİCKER,MessageType.text);
+        var location = await message.client.downloadAndSaveMediaMessage({
+            key: {
+                remoteJid: message.reply_message.jid,
+                id: message.reply_message.id
+            },
+            message: message.reply_message.data.quotedMessage
+        });
+
+        ffmpeg(location)
+            .fromFormat('webp_pipe')
+            .save('output.jpg')
+            .on('end', async () => {
+                await message.client.sendMessage(message.jid, fs.readFileSync('output.jpg'), MessageType.image, {mimetype: Mimetype.jpg});
+            });
+        return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
+    }));
+    Asena.addCommand({pattern: 'videosticker$', desc: 'Animasyonlu sticker\'i videoya çevirir.', fromMe: true}, (async (message, match) => {
+        if (message.reply_message === false) return await message.sendMessage(Lang.STİCKER_NEEDREPLY);
+
+        const savedFilename = await message.client.downloadAndSaveMediaMessage({
+            key: {
+                remoteJid: message.reply_message.jid,
+                id: message.reply_message.id
+            },
+            message: message.reply_message.data.quotedMessage
+        });
+        await webp2mp4File(savedFilename).then(async (rest) => {
+            await Axios({ method: "GET", url: rest.result, responseType: "stream"}).then(({ data }) => {
+                const saving = data.pipe(fs.createWriteStream('/root/WhatsAsenaDuplicated/stweb.mp4'))
+                saving.on("finish", async () => {
+                    await message.client.sendMessage(message.jid, fs.readFileSync('/root/WhatsAsenaDuplicated/stweb.mp4'), MessageType.video, { mimetype: Mimetype.mp4, caption: 'Made by WhatsAsena', quoted: message.data })
+                    if (fs.existsSync(savedFilename)) fs.unlinkSync(savedFilename)
+                    if (fs.existsSync('/root/WhatsAsenaDuplicated/stweb.mp4')) fs.unlinkSync('/root/WhatsAsenaDuplicated/stweb.mp4')
+                })
             })
         })
-    })
-}));
-       
+    }));
+}
+else if (Config.WORKTYPE == 'public') {
+
+    Asena.addCommand({pattern: 'mp4audio', fromMe: false, desc: Lang.MP4TOAUDİO_DESC}, (async (message, match) => {    
+
+        if (message.reply_message === false) return await message.client.sendMessage(message.jid, Lang.MP4TOAUDİO_NEEDREPLY, MessageType.text);
+        var downloading = await message.client.sendMessage(message.jid,Lang.MP4TOAUDİO,MessageType.text);
+        var location = await message.client.downloadAndSaveMediaMessage({
+            key: {
+                remoteJid: message.reply_message.jid,
+                id: message.reply_message.id
+            },
+            message: message.reply_message.data.quotedMessage
+        });
+
+        ffmpeg(location)
+            .withNoVideo()
+            .save('output.mp3')
+            .on('end', async () => {
+                await message.client.sendMessage(message.jid, fs.readFileSync('output.mp3'), MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: false});
+            });
+        return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
+    }));
+
+    Asena.addCommand({pattern: 'imagesticker', fromMe: false, desc: Lang.STİCKER_DESC}, (async (message, match) => {    
+
+        if (message.reply_message === false) return await message.client.sendMessage(message.jid, Lang.STİCKER_NEEDREPLY, MessageType.text);
+        var downloading = await message.client.sendMessage(message.jid,Lang.STİCKER,MessageType.text);
+        var location = await message.client.downloadAndSaveMediaMessage({
+            key: {
+                remoteJid: message.reply_message.jid,
+                id: message.reply_message.id
+            },
+            message: message.reply_message.data.quotedMessage
+        });
+
+        ffmpeg(location)
+            .fromFormat('webp_pipe')
+            .save('output.jpg')
+            .on('end', async () => {
+                await message.client.sendMessage(message.jid, fs.readFileSync('output.jpg'), MessageType.image, {mimetype: Mimetype.jpg});
+            });
+        return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
+    }));
+    Asena.addCommand({pattern: 'videosticker$', desc: 'Animasyonlu sticker\'i videoya çevirir.' , fromMe: true}, (async (message, match) => {
+        if (message.reply_message === false) return await message.sendMessage(Lang.STİCKER_NEEDREPLY);
+
+        const savedFilename = await message.client.downloadAndSaveMediaMessage({
+            key: {
+                remoteJid: message.reply_message.jid,
+                id: message.reply_message.id
+            },
+            message: message.reply_message.data.quotedMessage
+        });
+        await webp2mp4File(savedFilename).then(async (rest) => {
+            await Axios({ method: "GET", url: rest.result, responseType: "stream"}).then(({ data }) => {
+                const saving = data.pipe(fs.createWriteStream('/root/WhatsAsenaDuplicated/stweb.mp4'))
+                saving.on("finish", async () => {
+                    await message.client.sendMessage(message.jid, fs.readFileSync('/root/WhatsAsenaDuplicated/stweb.mp4'), MessageType.video, { mimetype: Mimetype.mp4, caption: 'Made for Founder', quoted: message.data })
+                    if (fs.existsSync(savedFilename)) fs.unlinkSync(savedFilename)
+                    if (fs.existsSync('/root/WhatsAsenaDuplicated/stweb.mp4')) fs.unlinkSync('/root/WhatsAsenaDuplicated/stweb.mp4')
+                })
+            })
+        })
+    }));
+}
+    
