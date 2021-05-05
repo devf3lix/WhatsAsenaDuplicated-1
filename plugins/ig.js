@@ -152,9 +152,11 @@ Asena.addCommand({ pattern: 'insta ?(.*)', fromMe: true, desc: Lang.DESC }, (asy
         if (!match[1].includes('www.instagram.com')) return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
 	
         let urls = `https://api.xteam.xyz/dl/ig?url=${match[1]}&APIKEY=ab9942f95c09ca89`
-        const json = JSON.parse(urls.body);
+        var response = await got(urls) 
+        const json = JSON.parse(response.body);
 
         if (json.status === false) return await message.client.sendMessage(message.jid, Lang.NOT_FOUND, MessageType.text, { quoted: message.data });
+        
         if (json.code === 403) return await message.client.sendMessage(message.jid, '```API Error!```', MessageType.text, { quoted: message.data });
 
         await message.client.sendMessage(message.jid, Tlang.DOWN, MessageType.text, { quoted: message.data });
