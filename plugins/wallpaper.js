@@ -653,9 +653,9 @@ if (Config.WORKTYPE == 'private') {
         const url = `${r_text[i]}`
         const path = '/root/WhatsAsenaDuplicated/wallpaper.jpg'
 
-        download(url, path, () => {
+        download(url, path, (async () => {
             await message.client.sendMessage(message.jid,fs.readFileSync('/root/WhatsAsenaDuplicated/wallpaper.jpg'), MessageType.text, {caption: 'Made for Founder'})
-        }
+        })
     }));
 }
 else if (Config.WORKTYPE == 'public') {
