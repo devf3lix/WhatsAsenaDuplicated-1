@@ -652,10 +652,10 @@ if (Config.WORKTYPE == 'private') {
             })
         }
         const url = `${r_text[i]}`
-        const path = '/root/WhatsAsenaDuplicated/wallpaper.jpg'
+        const path = '/root/WhatsAsenaDuplicated/wallpaper.jpeg'
 
         download(url, path, (async () => {
-            await message.client.sendMessage(message.jid,fs.readFileSync('/root/WhatsAsenaDuplicated/wallpaper.jpg'), MessageType.image, {caption: 'Made for Founder'})
+            await message.client.sendMessage(message.jid,fs.readFileSync('/root/WhatsAsenaDuplicated/wallpaper.jpeg'), MessageType.image, {mimetype: Mimetype.jpeg, caption: 'Made for Founder'})
         }))
     }));
 }
