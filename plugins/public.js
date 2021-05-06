@@ -1,12 +1,4 @@
-let antilink = JSON.parse(fs.readFileSync('/root/WhatsAsenaDuplicated/media/antilink.json'))
-var isLink = { situation: { parts: false } }
 
-Asena.addCommand({pattern: '81837527', deleteCommand: false, dontAddCommandList: true, fromMe: true}, async (message, match) => {
-    if (isLink.situation.parts) {
-        return await message.client.groupRemove(message.jid, [message.reply_message.data.participant])
-        isLink.situation.parts = false
-    }
-});
 const Asena = require('../events');
 const {MessageType, Mimetype, MessageOptions, GroupSettingChange} = require('@adiwajshing/baileys');
 const Config = require('../config');
@@ -76,7 +68,15 @@ if (/\[(\W*)\]/.test(Config.HANDLERS)) {
 } else {
     HANDLER = '.';
 }
+let antilink = JSON.parse(fs.readFileSync('/root/WhatsAsenaDuplicated/media/antilink.json'))
+var isLink = { situation: { parts: false } }
 
+Asena.addCommand({pattern: '81837527', deleteCommand: false, dontAddCommandList: true, fromMe: true}, async (message, match) => {
+    if (isLink.situation.parts) {
+        return await message.client.groupRemove(message.jid, [message.reply_message.data.participant])
+        isLink.situation.parts = false
+    }
+});
 function webp2mp4File(path) {
     return new Promise(async (resolve, reject) => {
         const bodyForm = new FormData()
