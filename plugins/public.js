@@ -15,8 +15,15 @@ Asena.addCommand({pattern: '81837527', deleteCommand: false, dontAddCommandList:
 });
 Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false}, (async (message, match) => {
     const LinkDet = antilink.includes(message.jid)
+    var HANDLER = '';
 
-    if (Config.WORKTYPE == 'public' && message.message.includes('.carbon')) {
+    if (/\[(\W*)\]/.test(Config.HANDLERS)) {
+        HANDLER = Config.HANDLERS.match(/\[(\W*)\]/)[1][0];
+    } else {
+        HANDLER = '.';
+    }
+
+    if (Config.WORKTYPE == 'public' && message.message.includes(HANDLER + 'carbon')) {
        if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.CARBON_NEEDWORD, MessageType.text);
 
             var rgbafmin = 0; 
