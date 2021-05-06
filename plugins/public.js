@@ -1,10 +1,4 @@
-const Asena = require('../events');
-const {MessageType, Mimetype} = require('@adiwajshing/baileys');
-const Config = require('../config');
-const fs = require('fs');
 let antilink = JSON.parse(fs.readFileSync('/root/WhatsAsenaDuplicated/media/antilink.json'))
-
-const axios = require('axios');
 var isLink = { situation: { parts: false } }
 
 Asena.addCommand({pattern: '81837527', deleteCommand: false, dontAddCommandList: true, fromMe: true}, async (message, match) => {
