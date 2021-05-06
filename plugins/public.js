@@ -148,28 +148,28 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
                         NEWHAND = '.';
                     }
                     if (command.desc == '' && !command.usage == '' && command.warn == '') {
-                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⌨️ ' + ALLang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
                     }
                     if (!command.desc == '' && command.usage == '' && command.warn == '') {
-                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n\n';
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + ALLang.DESC + ':* ```' + command.desc + '``` \n\n';
                     }
                     if (command.desc == '' && command.usage == '' && !command.warn == '') {
-                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⚠️ ' + ALLang.WARN + ':* ```' + command.warn + '```\n\n'
                     }
                     if (!command.desc == '' && !command.usage == '' && command.warn == '') {
-                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + ALLang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + ALLang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
                     }
                     if (!command.desc == '' && command.usage == '' && !command.warn == '') {
-                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + ALLang.DESC + ':* ```' + command.desc + '``` \n' + '*⚠️ ' + ALLang.WARN + ':* ```' + command.warn + '```\n\n'
                     }
                     if (command.desc == '' && !command.usage == '' && !command.warn == '') {
-                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⌨️ ' + ALLang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + ALLang.WARN + ':* ```' + command.warn + '```\n\n'
                     }
                     if  (command.desc == '' && command.usage == '' && command.warn == '') {
-                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n\n'
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n\n'
                     }
                     if  (!command.desc == '' && !command.usage == '' && !command.warn == '') {
-                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + ALLang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + ALLang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + ALLang.WARN + ':* ```' + command.warn + '```\n\n'
                     }
                 }
             );
@@ -231,7 +231,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
     else if (fmsg.includes(HANDLER + 'xmedia')) {
         await message.client.sendMessage(message.jid,'💻Usage: *.mp4enhance*\nℹ️Desc: 🇹🇷 Videnun kalitesini artırır.\n🇬🇧 Enhance video’s quality.\n\n💻Usage: *.interp*\nℹ️Desc: 🇹🇷 Videonun FPS değerini arttırır.\n🇬🇧 Increases the FPS of the video.\n\n💻Usage: *.mp4slowmo*\nℹ️Desc: 🇹🇷 Ağır çekim olmayan videolara true-slowmo uygular.\n🇬🇧 Applies true-slowmo to non-slow motion videos.\n\n💻Usage: *.x4mp4*\nℹ️Desc: 🇹🇷 Video Kalitesini 4 kat düşürür.\n🇬🇧 Reduce video’s quality by 75%.\n\n💻Usage: *.x2mp4*\nℹ️Desc: 🇹🇷 Video Kalitesini 2 kat düşürür.\n🇬🇧 Reduce video’s quality by 50%.\n\n💻Usage: *.gif*\nℹ️Desc: 🇹🇷 Videoyu gif’e çevirir.\n🇬🇧 Converts video to gif.\n\n💻Usage: *.agif*\nℹ️Desc: 🇹🇷 Videoyu sesli gif’e çevirir.\n🇬🇧 Converts video to voiced gif.\n\n💻Usage: *.mp4blur*\nℹ️Desc: 🇹🇷 Video arka planını bulanıklaştırır.\n🇬🇧 Blurs the background of the video.\n\n💻Usage: *.mp4stab*\nℹ️Desc: 🇹🇷 Videonun titreşimini azaltır.\n🇬🇧 Decreases the vibration of the video.\n\n💻Usage: *.mp4rainbow*\nℹ️Desc: 🇹🇷 Videoya gökkuşağı efekti uygular.\n🇬🇧 Applies a rainbow effect to video.\n\n💻Usage: *.mp4color*\nℹ️Desc: 🇹🇷 Videonun renklerini daha canlı ve çekici yapar.\n🇬🇧 Makes the colors of the video more vivid and beautiful.\n\n💻Usage: *.mp4art*\nℹ️Desc: 🇹🇷 Videoya çizim efekti uygular.\n🇬🇧 Applies a art effect to the video.\n\n💻Usage: *.mp4negative*\nℹ️Desc: 🇹🇷 Videoya negatif renk filtresi uygular.\n🇬🇧 Applies a negative color filter to the video.\n\n💻Usage: *.mp4vintage*\nℹ️Desc: 🇹🇷 Videoya nostaji efekti uygular.\n🇬🇧 Applies a nostalgic effect to video.\n\n💻Usage: *.mp4bw*\nℹ️Desc: 🇹🇷 Videoya monochrome efekti uygular.\n🇬🇧 Applies a monochrome effect to video.\n\n💻Usage: *.mp4reverse*\nℹ️Desc: 🇹🇷 Videoyu tersten oynatır.\n🇬🇧 Plays the video in reverse.\n\n💻Usage: *.mp4edge*\nℹ️Desc: 🇹🇷 Videoya edge efekti uygular.\n🇬🇧 Applies a edge effect to the video.\n\n💻Usage: *.mp4image*\nℹ️Desc: 🇹🇷 Fotoğrafı 5 saniyelik videoya çevirir.\n🇬🇧 Converts photo to 5 sec video.\n\n💻Usage: *.spectrum*\nℹ️Desc: 🇹🇷 Sesin spektrum görüntüsünü video yapar.\n🇬🇧 Converts the spectrum of sound into video.\n\n💻Usage: *.waves*\nℹ️Desc: 🇹🇷 Sesin dalga aralığını videoya çevirir.\n🇬🇧 Converts the wave range of sound to video.\n\n💻Usage: *.frequency*\nℹ️Desc: 🇹🇷 Sesin frekans aralığını videoya çevirir.\n🇬🇧 Converts the frequency range of sound to video.\n\n💻Usage: *.avec*\nℹ️Desc: 🇹🇷 Sesin farklı bir histogramını videoya çevirir.\n🇬🇧 Converts the histogram of sound to video.\n\n💻Usage: *.volumeaudio*\nℹ️Desc: 🇹🇷 Sesin Desibel Değerini Videoya Dönüştürür.\n🇬🇧 Converts the decibel value of the sound into video.\n\n💻Usage: *.cqtaudio*\nℹ️Desc: 🇹🇷 Ses CQT değerini videoya çevirir.\n🇬🇧 Converts the CQT value of audio to video.\n\n💻Usage: *.mp3eq*\nℹ️Desc: 🇹🇷 Sesi kristal berraklık düzeyinde ayarlar.\n🇬🇧 Adjusts the sound to a crystal clear level.\n\n💻Usage: *.mp3crusher*\nℹ️Desc: 🇹🇷 Sesi bozar ve gülünç hale getirir.\n🇬🇧 Distorts the sound, makes ridiculous.\n\n💻Usage: *.mp3reverse*\nℹ️Desc: 🇹🇷 Sesi Tersen Oynatır.\n🇬🇧 Plays the sound in reverse.\n\n💻Usage: *.mp3pitch*\nℹ️Desc: 🇹🇷 Sesi inceltir ve hızlandırır.\n🇬🇧 Makes the sound thinner and faster.\n\n💻Usage *.mp3low*\nℹ️Desc: 🇹🇷 Sesi kalınlaştırır ve yavaşlatır.\n🇬🇧 Makes the sound deep and slower.\n\n💻Usage: *.x2mp3*\nℹ️Desc: 🇹🇷 Sesi 2 kat hızlandırır.\n🇬🇧 Makes the sound twice as fast.\n\n💻Usage: *.mp3volume*\nℹ️Desc: 🇹🇷 Ses seviyesini fazalca arttırır.\n🇬🇧 Increase sound level so much.\n\n💻Usage: *.bwimage*\nℹ️Desc: 🇹🇷 Fotoğrafa monochrome efekti uygular.\n🇬🇧 Applies a monochrome effect to image.\n\n💻Usage: *.vintageimage*\nℹ️Desc: 🇹🇷 Fotoğrafa vintage efekti uygular.\n🇬🇧 Applies a vinatge effect to video.\n\n💻Usage: *.edgeimage*\nℹ️Desc: 🇹🇷 Fotoğrafa edge efekti uygular.\n🇬🇧 Applies a edge effect to the photo.\n\n💻Usage: *.enhanceimage*\nℹ️Desc: 🇹🇷 Fotoğrafı daha net hale getirir.\n🇬🇧 Makes the photo clearer.\n\n💻Usage: *.blurimage*\nℹ️Desc: 🇹🇷 Fotoğrafın arka planını bulanıklaştırır.\n🇬🇧 Blurs the background of the photo.\n\n💻Usage: *.grenimage*\nℹ️Desc: 🇹🇷 Fotoğrafa gren efekti uygular.\n🇬🇧 Applies grain effect to the photo.\n\n💻Usage: *.negativeimage*\nℹ️Desc: 🇹🇷 Fotoğrafa negatif renk filtresi uygular.\n🇬🇧 Applies a negative color filter to the photo.\n\n💻Usage: *.rainbowimage*\nℹ️Desc: 🇹🇷 Fotoğrafa gökkuşağı efekti uygular.\n🇬🇧 Applies rainbow effect to the photo.\n\n💻Usage: *.colorimage*\nℹ️Desc: 🇹🇷 Fotoğrafın renklerini daha canlı ve çekici yapar.\n🇬🇧 It makes the colors of the photo more vivid and attractive.\n\n💻Usage: *.artimage*\nℹ️Desc: 🇹🇷 Fotoğrafa çizim efekti uygular.\n🇬🇧 Applies a art effect to the photo.', msgtxt);
     }
-    else if (fmsg.includes(HANDLER + 'x4mp4')) {
+    else if (fmsg.includes(HANDLER + 'x4mp4') && !fmsg.includes('Desc')) {
         if (!message.reply_message.video) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```',msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -251,7 +251,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'x2mp4')) {
+    else if (fmsg.includes(HANDLER + 'x2mp4') && !fmsg.includes('Desc')) {
         if (!message.reply_message.video) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```',msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -271,7 +271,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4image')) {
+    else if (fmsg.includes(HANDLER + 'mp4image') && !fmsg.includes('Desc')) {
         if (!message.reply_message.image) return await message.sendMessage('*Need Photo!*');
         var downloading = await message.client.sendMessage(message.jid,'```Converting..```',msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -293,7 +293,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'spectrum')) {
+    else if (fmsg.includes(HANDLER + 'spectrum') && !fmsg.includes('Desc')) {
         if (!message.reply_message.image) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Converting..```',msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -312,7 +312,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'waves')) {
+    else if (fmsg.includes(HANDLER + 'waves') && !fmsg.includes('Desc')) {
         if (!message.reply_message) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Converting..```',msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -331,7 +331,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'frequency')) {
+    else if (fmsg.includes(HANDLER + 'frequency') && !fmsg.includes('Desc')) {
         if (!message.reply_message) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Converting..```',msgtxt);
             var location = await message.client.downloadAndSaveMediaMessage({
@@ -350,7 +350,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'avec')) {
+    else if (fmsg.includes(HANDLER + 'avec') && !fmsg.includes('Desc')) {
         if (!message.reply_message) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Converting..```',msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -369,7 +369,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'volumeaudio')) {
+    else if (fmsg.includes(HANDLER + 'volumeaudio') && !fmsg.includes('Desc')) {
         if (!message.reply_message) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Converting..```',msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -388,7 +388,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'cqtaudio')) {
+    else if (fmsg.includes(HANDLER + 'cqtaudio') && !fmsg.includes('Desc')) {
         if (!message.reply_message) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Converting..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -407,7 +407,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp3eq')) {
+    else if (fmsg.includes(HANDLER + 'mp3eq' && !fmsg.includes('Desc'))) {
         if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -426,7 +426,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp3crusher')) {
+    else if (fmsg.includes(HANDLER + 'mp3crusher') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -445,7 +445,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp3reverse')) {
+    else if (fmsg.includes(HANDLER + 'mp3reverse') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -464,7 +464,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4vintage')) {
+    else if (fmsg.includes(HANDLER + 'mp4vintage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -484,7 +484,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4reverse')) {
+    else if (fmsg.includes(HANDLER + 'mp4reverse') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -505,7 +505,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4bw')) {
+    else if (fmsg.includes(HANDLER + 'mp4bw') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -525,7 +525,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'bwimage')) {
+    else if (fmsg.includes(HANDLER + 'bwimage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -544,7 +544,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
         });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'vintageimage')) {
+    else if (fmsg.includes(HANDLER + 'vintageimage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -563,7 +563,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4enhance')) {
+    else if (fmsg.includes(HANDLER + 'mp4enhance') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -583,7 +583,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'blurimage')) {
+    else if (fmsg.includes(HANDLER + 'blurimage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
         var downloading = await message.client.sendMessage(message.jid,'```Converting..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -602,7 +602,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4blur')) {
+    else if (fmsg.includes(HANDLER + 'mp4blur') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -621,7 +621,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp3pitch')) {
+    else if (fmsg.includes(HANDLER + 'mp3pitch') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -640,7 +640,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4edge')) {
+    else if (fmsg.includes(HANDLER + 'mp4edge') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Edging Video..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -660,7 +660,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp3low')) {
+    else if (fmsg.includes(HANDLER + 'mp3low') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -679,7 +679,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'x2mp3')) {
+    else if (fmsg.includes(HANDLER + 'x2mp3') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -698,7 +698,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'edgeimage')) {
+    else if (fmsg.includes(HANDLER + 'edgeimage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Photo*');
         var downloading = await message.client.sendMessage(message.jid,'```Edging Image..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -717,7 +717,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'enhanceimage')) {
+    else if (fmsg.includes(HANDLER + 'enhanceimage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
         var downloading = await message.client.sendMessage(message.jid,'```Converting..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -736,7 +736,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp3volume')) {
+    else if (fmsg.includes(HANDLER + 'mp3volume') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -755,7 +755,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'gif')) {
+    else if (fmsg.includes(HANDLER + 'gif') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('Need Video!');
         var downloading = await message.client.sendMessage(message.jid,'```Converting to Gif..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -775,7 +775,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'agif')) {
+    else if (fmsg.includes(HANDLER + 'agif') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('Need Video!');
         var downloading = await message.client.sendMessage(message.jid,'```Converting to Gif..```',MessageType.text);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -794,7 +794,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'grenimage')) {
+    else if (fmsg.includes(HANDLER + 'grenimage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('Need Photo!');
         var downloading = await message.client.sendMessage(message.jid,'```Adding Gren..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -813,7 +813,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'interp')) {
+    else if (fmsg.includes(HANDLER + 'interp') && !fmsg.includes('Desc')) {
         if (!message.reply_message.video) return await message.sendMessage('*Need Video and FPS Value!*\nEx: ```.interp 100```');
         if (message.reply_message.video && match[1] <= 10) return await message.sendMessage('*Low FPS Value ⚠️*\n*Please, type over 10*');
         if (message.reply_message.video && match[1] >= 500) return await message.sendMessage('*High FPS Value ⚠️*\n*Please, type under 500*')
@@ -837,7 +837,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'rainbowimage')) {
+    else if (fmsg.includes(HANDLER + 'rainbowimage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -857,7 +857,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4rainbow')) {
+    else if (fmsg.includes(HANDLER + 'mp4rainbow') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -877,7 +877,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'negativeimage')) {
+    else if (fmsg.includes(HANDLER + 'negativeimage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -896,7 +896,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4negative')) {
+    else if (fmsg.includes(HANDLER + 'mp4negative') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -916,7 +916,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4art')) {
+    else if (fmsg.includes(HANDLER + 'mp4art') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -936,7 +936,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'artimage')) {
+    else if (fmsg.includes(HANDLER + 'artimage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -955,7 +955,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4stab')) {
+    else if (fmsg.includes(HANDLER + 'mp4stab') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -975,7 +975,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4color')) {
+    else if (fmsg.includes(HANDLER + 'mp4color') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -995,7 +995,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'colorimage')) {
+    else if (fmsg.includes(HANDLER + 'colorimage') && !fmsg.includes('Desc')) {
         if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
         var downloading = await message.client.sendMessage(message.jid,'```Editing..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -1014,7 +1014,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'mp4slowmo')) {
+    else if (fmsg.includes(HANDLER + 'mp4slowmo') && !fmsg.includes('Desc')) {
         if (!message.reply_message.video) return await message.sendMessage('*Need Video!*');
         var downloading = await message.client.sendMessage(message.jid,'```Motion Render Interpolating..```', msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -1038,7 +1038,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'carbon')) {
+    else if (fmsg.includes(HANDLER + 'carbon') && !fmsg.includes('botu')) {
         if (match[1] === '') return await message.client.sendMessage(message.jid,CARLang.CARBON_NEEDWORD, msgtxt);
 
         var rgbafmin = 0; 
@@ -1093,7 +1093,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
         var respoimage = await axios.get(`https://thiccyscarbonapi.herokuapp.com/?code=${match[1].replace(/#/gi, "%250A").replace(/Ö/g, "%C3%96").replace(/ö/g, "%C3%B6").replace(/ü/g, "%C3%BC").replace(/Ü/g, "%C3%9C").replace(/Ğ/g, "%C4%9E").replace(/ğ/g, "%C4%9F").replace(/ş/g, "%C5%9F").replace(/Ş/g, "%C5%9E").replace(/ç/g, "%C3%A7").replace(/Ç/g, "%C3%87").replace(/ı/g, "%C4%B1").replace(/i/g, "%69").replace(/"/g, "%22").replace(/İ/g, "%C4%B0")}&theme=` + Theme[i] + '&exportSize=3x&paddingVertical=200px&paddingHorizontal=200px&backgroundColor=rgba(' + rgbafirst + ',' + rgbasecond + ',' + rgbathird + ')&language=' + Language[l], { responseType: 'arraybuffer' })
         await message.client.sendMessage(message.jid,Buffer.from(respoimage.data), msgim, {mimetype: Mimetype.png, caption: 'Made by WhatsAsena'})
     }
-    else if (fmsg.includes(HANDLER + 'videosticker')) {
+    else if (fmsg.includes(HANDLER + 'videosticker') && !fmsg.includes('botu')) {
         if (message.reply_message === false) return await message.sendMessage(XMLang.STİCKER_NEEDREPLY);
 
         const savedFilename = await message.client.downloadAndSaveMediaMessage({
@@ -1114,7 +1114,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             })
         })
     }
-    else if (fmsg.includes(HANDLER + 'mp4audio')) {
+    else if (fmsg.includes(HANDLER + 'mp4audio') && !fmsg.includes('botu')) {
         if (message.reply_message === false) return await message.client.sendMessage(message.jid, XMLang.MP4TOAUDİO_NEEDREPLY, msgtxt);
         var downloading = await message.client.sendMessage(message.jid,XMLang.MP4TOAUDİO, msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -1133,7 +1133,7 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }
-    else if (fmsg.includes(HANDLER + 'imagesticker')) {
+    else if (fmsg.includes(HANDLER + 'imagesticker') && !fmsg.includes('botu')) {
         if (message.reply_message === false) return await message.client.sendMessage(message.jid, XMLang.STİCKER_NEEDREPLY, msgtxt);
         var downloading = await message.client.sendMessage(message.jid,XMLang.STİCKER, msgtxt);
         var location = await message.client.downloadAndSaveMediaMessage({
