@@ -196,33 +196,32 @@ Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommand
                             NEWHAND = '.';
                         }
                         if (command.desc == '' && !command.usage == '' && command.warn == '') {
-                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
-                        }
-                        if (!command.desc == '' && command.usage == '' && command.warn == '') {
-                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n\n';
-                        }
-                        if (command.desc == '' && command.usage == '' && !command.warn == '') {
-                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
-                        }
-                        if (!command.desc == '' && !command.usage == '' && command.warn == '') {
-                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
-                        }
-                        if (!command.desc == '' && command.usage == '' && !command.warn == '') {
-                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
-                        }
-                        if (command.desc == '' && !command.usage == '' && !command.warn == '') {
-                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
-                        }
-                        if  (command.desc == '' && command.usage == '' && command.warn == '') {
-                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n\n'
-                        }
-                        if  (!command.desc == '' && !command.usage == '' && !command.warn == '') {
-                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
-                        }
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⌨️ ' + ALLang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                    }
+                    if (!command.desc == '' && command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + ALLang.DESC + ':* ```' + command.desc + '``` \n\n';
+                    }
+                    if (command.desc == '' && command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⚠️ ' + ALLang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
+                    if (!command.desc == '' && !command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + ALLang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + ALLang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                    }
+                    if (!command.desc == '' && command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + ALLang.DESC + ':* ```' + command.desc + '``` \n' + '*⚠️ ' + ALLang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
+                    if (command.desc == '' && !command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*⌨️ ' + ALLang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + ALLang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
+                    if  (command.desc == '' && command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n\n'
+                    }
+                    if  (!command.desc == '' && !command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + ALLang.COMMAND + ':* ```' + (match.length >= 3 ? (NEWHAND + match[2]) : command.pattern) + '```\n' + '*💬 ' + ALLang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + ALLang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + ALLang.WARN + ':* ```' + command.warn + '```\n\n';
                     }
                 }
             );
-            if (CMD_HELP === '') CMD_HELP += Lang.NOT_FOUND;
+            if (CMD_HELP === '') CMD_HELP += ALLang.NOT_FOUND;
             await message.client.sendMessage(
                 message.jid,'●▬▬▬ *WhatsAsena Private* ▬▬▬●\n\n' + CMD_HELP, msgtxt
             );
