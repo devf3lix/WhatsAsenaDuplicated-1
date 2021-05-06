@@ -103,7 +103,7 @@ function webp2mp4File(path) {
             bodyFormThen.append('file', gotdata.file)
             bodyFormThen.append('token', gotdata.token)
             bodyFormThen.append('convert', gotdata.convert)
-            await Axios({
+            await axios({
                 method: 'post',
                 url: 'https://ezgif.com/webp-to-mp4/' + gotdata.file,
                 data: bodyFormThen,
