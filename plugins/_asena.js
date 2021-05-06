@@ -66,7 +66,7 @@ Asena.addCommand({pattern: 'asena ?(.*)', fromMe: true, dontAddCommandList: true
                     var cmatch = [command.pattern];
                 }
                 
-                if (cmatch[2] == match[1]) {
+                if (cmatch[2].includes(match[1])) {
                     var HANDLER = '';
     
                     if (/\[(\W*)\]/.test(Config.HANDLERS)) {
