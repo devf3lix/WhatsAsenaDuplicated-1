@@ -61,12 +61,12 @@ Asena.addCommand({pattern: 'asena ?(.*)', fromMe: true, dontAddCommandList: true
             async (command) =>  {
                 if (command.dontAddCommandList || command.pattern === undefined) return;
                 try {
-                    var cmatch = command.pattern.toString().match(/(\W*)([A-Za-züşıiğöç1234567890 ]*)/);
+                    var cmatch = command.pattern.toString().match(/(\W*)([A-Za-züşğiöç1234567890]*)/);
                 } catch {
                     var cmatch = [command.pattern];
                 }
-                let regex1 = new RegExp(`${match[1]}`)
-                if (cmatch[2] == regex1) {
+                
+                if (cmatch[2] == match[1]) {
                     var HANDLER = '';
     
                     if (/\[(\W*)\]/.test(Config.HANDLERS)) {
