@@ -429,7 +429,7 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
                         }
                         catch (error) {
                             if (error.message.includes('429')) return;
-
+                            else if(error.message.includes('expecting')) return;
                             else if (config.LANG == 'TR' || config.LANG == 'AZ') {
                                 await conn.sendMessage(conn.user.jid, '*-- HATA RAPORU [WHATSASENA] --*' + 
                                     '\n*WhatsAsena bir hata gerçekleşti!*'+
