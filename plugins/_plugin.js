@@ -59,16 +59,9 @@ Asena.addCommand({pattern: 'install ?(.*)', fromMe: true, desc: Lang.INSTALL_DES
             fs.unlinkSync('/root/WhatsAsenaDuplicated/plugins/' + plugin_name + '.js')
             return await message.client.sendMessage(message.jid, Lang.INVALID_PLUGIN + ' ```' + err + '```', MessageType.text);
         }
-        var exist = await Db.PluginDB.findAll({ where: {name: plugin_name} });
-        if (exist.match(plugin_name)) {
-            fs.unlinkSync('/root/WhatsAsenaDuplicated/plugins/' + plugin_name + '.js')
-            return await message.client.sendMessage(message.jid,'*Aynı Plugin\'i 2 Kez Yüklemeyezsiniz!*', MessageType.text)
-        }
-        else {
             await new Promise(r => setTimeout(r, 400));
             await Db.installPlugin(url, plugin_name);
             await message.client.sendMessage(message.jid, Lang.INSTALLED, MessageType.text);
-        }
     }
 }));
 
