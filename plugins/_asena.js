@@ -61,7 +61,7 @@ Asena.addCommand({pattern: 'asena ?(.*)', fromMe: true, dontAddCommandList: true
             async (command) =>  {
                 if (command.dontAddCommandList || command.pattern === undefined) return;
                 try {
-                    var cmatch = command.pattern.toString().match(/(\W*)([A-Za-züşğiöç1234567890 ]*)/);
+                    var cmatch = command.pattern.toString().match(/(\W*)([A-Za-züşğiöç 1234567890]*)/);
                 } catch {
                     var cmatch = [command.pattern];
                 }
@@ -82,7 +82,7 @@ Asena.addCommand({pattern: 'asena ?(.*)', fromMe: true, dontAddCommandList: true
                 }
             }
         );
-        if (CMD_HELP === '') CMD_HELP += Lang.NOT_FOUND;
+        if (CMD_HELP == '') CMD_HELP += Lang.NOT_FOUND;
         await message.client.sendMessage(
             message.jid,'●▬▬▬ *WhatsAsena Founder Edition* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
         );
